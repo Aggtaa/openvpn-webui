@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>OpenVPN monitor</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="./styles/main.css" rel="stylesheet" />
+        {{!-- <meta http-equiv="refresh" content="30"> --}}
+    </head>
+    <body>
+        <div id="title">{{openvpn.title}}</div>
+        <div id="address"><span class="header">Server Address</span> {{openvpn.host}}</div>
+        <div id="time"><span class="header">Server Time</span> {{dateTime openvpn.time}}</div>
+        <div id="clientCount"><span class="header">Client Count</span> {{openvpn.load.clientCount}}</div>
+        <div id="traffic"><span class="header">Traffic</span> <span class="header">↑</span>{{bytes openvpn.load.bytesSent}} &nbsp; <span class="header">↓</span>{{bytes openvpn.load.bytesReceived}}</div>
+        {{!-- <div id="pid"><span class="header">PID</span> {{openvpn.pid}}</div> --}}
+
+        <div id="clients">
+            <div class="header">Clients</div>
+        <ul>
+            <div class="header">
+                <div class="name">Common Name</div>
+                <div class="virtualAddress">Address</div>
+                {{!-- <div class="realAddress">Real Address</div> --}}
+                <div class="connectedSince">Connected Since</div>
+                <div class="username">Username</div>
+                {{!-- <div class="peerId">Peer ID</div> --}}
+                {{!-- <div class="bytesReceived">↑</div>
+                <div class="bytesSent">↓</div> --}}
+                <div class="traffic">Traffic</div>
+                <div class="traffic2"></div>
+                <div></div>
+            </div>
+            {{#each openvpn.clients}}
+            <div id="client{{ClientID}}">
+                <div class="name">{{CommonName}}</div>
+                <div class="virtualAddress">{{VirtualAddress}}{{#if VirtualIPv6Address}}<br/>
+                    {{VirtualIPv6Address}}
+                    {{/if}}</div>
+                {{!-- <div class="realAddress">{{RealAddress}}</div> --}}
+                <div class="connectedSince">{{dateTime ConnectedSince}}</div>
+                <div class="username">{{Username}}</div>
+                {{!-- <div class="peerId">{{PeerID}}</div> --}}
+                {{!-- <div class="bytesReceived">↑ {{bytes BytesReceived}}</div> --}}
+                {{!-- <div class="bytesSent">↓ {{bytes BytesSent}}</div> --}}
+                <div class="traffic"><span class="header">↑</span>{{bytes BytesReceived}}</div>
+                <div class="traffic2"><span class="header">↓</span>{{bytes BytesSent}}</div>
+                <button onclick="alert('{{ClientID}}')">X</button>
+            </div>
+            {{/each}}
+        </ul>
+        </div>
+        {{!-- <div id="debug">{{json openvpn}}</div> --}}
+    </body>
+</html>
+

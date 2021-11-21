@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "baseUrl": ".",
+        "rootDir": ".",
+        "outDir": "dist",
+        "module": "commonjs",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "lib": [
+            "es6"
+        ],
+        "skipLibCheck": true,
+        "strict": false,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/@types"
+        ],
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./package.json"
+    ],
+    "exclude": [
+        "./node_modules"
+    ]
+}

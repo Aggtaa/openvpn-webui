@@ -1,0 +1,30 @@
+{
+  "name": "openvpn-webui",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "prestart": "npx sass src/static/styles/main.scss src/static/styles/main.css",
+    "start": "sh -ac '. ./.env; ts-node src/index --async-stack-traces'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debug-threads-ns": "^0.2.2",
+    "express": "^4.17.1",
+    "express-hbs": "^2.4.0",
+    "luxon": "^2.1.1",
+    "node-openvpn": "^0.1.1",
+    "split2": "^4.1.0",
+    "telnet-client": "^1.4.11",
+    "thread-context": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.7.10",
+    "@types/split2": "^3.2.1",
+    "typescript": "^4.4.2"
+  }
+}
