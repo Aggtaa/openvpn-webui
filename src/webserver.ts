@@ -19,8 +19,8 @@ export default class WebServer {
 
     constructor(options: Pick<WebServerOptions, 'openvpn'> & Partial<WebServerOptions>) {
         this.options = {
-            host: '0.0.0.0',
-            port: 38087,
+            host: process.env.HOST || '0.0.0.0',
+            port: Number(process.env.PORT) || 38087,
             ...options,
         };
 
@@ -56,7 +56,7 @@ export default class WebServer {
     public start(): Promise<void> {
         return new Promise((res) => {
             this.app.listen(this.options.port, this.options.host, () => {
-                log.web.info('web server started');
+                log.web.info(`web server started at ${this.options.host}:${this.options.port}`);
                 res();
             });
         });
